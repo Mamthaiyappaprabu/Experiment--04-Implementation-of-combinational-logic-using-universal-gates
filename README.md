@@ -7,8 +7,8 @@ To implement the given logic function using NAND and NOR gates and to verify its
 F=((C'.B.A)'(D'.C.A)'(C.B'.A)')' using NAND gate
 F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')' using NOR gate
 ## Equipments Required:
-## Hardware – PCs, Cyclone II , USB flasher
-## Software – Quartus prime
+ Hardware – PCs, Cyclone II , USB flasher
+ Software – Quartus prime
 
 
 ## Theory
@@ -19,25 +19,66 @@ NAND gate is actually a combination of two logic gates i.e. AND gate followed by
 
 F=((C'.B.A)'(D'.C.A)'(C.B'.A)')'
 
-## Logic Diagram
 
-Using NOR gates
+
+## Using NOR gates
 NOR gate is actually a combination of two logic gates: OR gate followed by NOT gate. So its output is complement of the output of an OR gate. This gate can have minimum two inputs, output is always one. By using only NOR gates, we can realize all logic functions: AND, OR, NOT, Ex-OR, Ex-NOR, NAND. So this gate is also called universal gate. Designing a circuit with NOR gates only uses the same basic techniques as designing a circuit with NAND gates; that is, the application of deMorgan’s theorem. The only difference between NOR gate design and NAND gate design is that the former must eliminate product terms and the later must eliminate sum terms.
 
 F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 
-## Logic Diagram
-## Procedure
+
+## Procedure:
+1.Create a project with required entities. 2.Create a module along with respective file name. 3.Run the respective programs for the given boolean equations. 4.Run the module and get the respective RTL outputs. 5.Create university program(VWF) for getting timing diagram. 6.Give the respective inputs for timing diagram and obtain the results.
+
+
 ## Program:
 /*
 Program to implement the given logic function using NAND and NOR gates and to verify its operations in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Mamtha.I
+RegisterNumber:  22008484
 */
-## RTL realization
 
-## Output:
-## RTL
-## Timing Diagram
+## Using NAND:
+```
+   module combo1(a,b,c,d,f);
+   input a,b,c,d;
+   output f;
+   wire p,q,r;
+   assign p=(~c & b & a);
+   assign q=(~d & c & ~a);
+   assign r=(c & ~b & a);
+   assign f=(~(~p & ~q & ~r));
+   endmodule
+   ```
+## Using NOR:
+``` 
+   module combo2(a,b,c,d,f);
+   input a,b,c,d;
+   output f;
+   wire p,q,r;
+   assign p=( c & ~b & a);
+   assign q=( d & ~c & a);
+   assign r=( c & ~b & a);
+   assign f=(~(~( p | q | r)));
+   endmodule
+```
+## OUTPUT:
+## Using NAND:
+
+## RTL realization:
+![OUTPUT](./RTLnand.png)
+## Truthtable:
+![output](./truthnand.png)
+## Timing Diagram:
+![output](./timingnand.png)
+
+## Using NOR:
+
+## RTL realization:
+![output](./rtlnor.png)
+## Truthtable:
+![output](./truthnor.png)
+## Timing Diagram:
+![output](./timingnor.png)
 ## Result:
 Thus the given logic functions are implemented using NAND and NOR gates and their operations are verified using Verilog programming.
